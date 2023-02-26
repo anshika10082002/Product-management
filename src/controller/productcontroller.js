@@ -49,14 +49,13 @@ const createProduct= async function(req,res){
          if(!uploadImage){return res.status(400).send({status:false,message:"productImage should be present"})}
          data.productImage=uploadImage
 
-       if(availableSizes){
-        let size= availableSizes.toUpperCase().split(" ")
-        for(let i=0;i<size.length;i++){
-          if(!isValidSize(size[i])){return res.status(400).send({status:false,message:"size shouid be "})}
-        }
-       }
-            data.availableSizes=size
-        
+         if(availableSizes){
+          let size= availableSizes.toUpperCase().split(" ")
+           for(let i=0;i<size.length;i++){   
+           if(!isValidSize(size[i])){return res.status(400).send({status:false,message:"Available sizes can be only these-S, XS, M ,X, L, XXL, XL"})}
+           }
+              data.availableSizes=size
+          }
 
         if(data.installments){
           if(isNaN(data.installments.trim()))return res.status(400).send({status:false,message:"Please put installments in Number"})}
