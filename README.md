@@ -226,7 +226,7 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 
 ### GET Product details
  - **Endpoint**:/products
- -**Method**: GET
+ - **Method**: GET
 - Returning all products in the collection that aren't deleted.
   - __Filters__
     - Size ( key - 'size')
