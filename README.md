@@ -1,7 +1,7 @@
 #Lithium
 ## Project - Products Management
 
-- This backend project provides **APIs** for product management, including **user registration**, **login**, **product**, **cart**, and **order** . It uses **Node.js** and **MongoDB** with **Mongoose liberary** to connect to the database, **AWS S3** and **JWT** for authentication and authorization in some APIs.
+- This backend project provides **APIs** for product management, including **user registration**, **login**, **product**, **cart**, and **order** . It uses **Node.js** and **MongoDB** with **Mongoose liberary** to connect to the database, **AWS S3** service to upload image and **JWT** for authentication and authorization in some APIs.
 
 - In this project we are changing how we send token with a request. Instead of using a custom header key like x-api-key, you need to use Authorization header and send the JWT token as Bearer token.Using bcrypt liberary to bcrypt password.
 
