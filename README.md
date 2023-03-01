@@ -1,8 +1,16 @@
-# project5
 
-## Lithium
+
+
 
 ## Project - Products Management
+This backend project provides APIs for product management, including user registration, login, product, cart, and order management. AWS S3 is used for storage, and JWT is used for authentication and authorization in some APIs.
+
+=>To run the project locally, you'll need to have Node.js and MongoDB installed. Then, follow these steps:
+
+1.Clone the repository
+2.Install dependencies by running  *npm install*
+
+
 ## Key points
 In this project we will work feature wise. That means we pick one object like user, book, blog, etc at a time. We work through it's feature. The steps would be:
 We create it's model.
