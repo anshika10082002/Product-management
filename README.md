@@ -1,15 +1,16 @@
 #Lithium
 ## Project - Products Management
 
-- This backend project provides APIs for product management, including user registration, login, product, cart, and order management. It uses Node.js and MongoDB with Mongoose liberary to connect to the database, and AWS S3 and JWT for authentication and authorization in some APIs.
+- This backend project provides **APIs** for product management, including **user registration**, **login**, **product**, **cart**, and **order** . It uses **Node.js** and **MongoDB** with **Mongoose liberary** to connect to the database, **AWS S3** and **JWT** for authentication and authorization in some APIs.
 
 - In this project we are changing how we send token with a request. Instead of using a custom header key like x-api-key, you need to use Authorization header and send the JWT token as Bearer token.Using bcrypt liberary to bcrypt password.
 
 - To run the project locally, you'll need to have Node.js and MongoDB installed. Then, follow these steps:
 
+```yaml
 1.Clone the repository
 2.Install dependencies by running  *npm install*
-
+```
 
 
 ## FEATURE I - User
@@ -42,10 +43,10 @@
 
 
 ## User APIs 
-### POST /register
-- Endpoint: /register
-- Method: POST
-- Parameters:
+### User Registration
+- **Endpoint**: /register
+- **Method**: POST
+- **Parameters**:
     - name: User's name (required)
     - email: User's email (required)
     - password: User's password (required)
@@ -86,10 +87,10 @@
 }
 ```
 
-### POST /login
-- Endpoint: /login
-- Method: POST
-- Parameters:
+### User login
+- **Endpoint**: /login
+- **Method**: POST
+- **Parameters**:
     - email: User's email (required)
     - password: User's password (required)
 
@@ -107,9 +108,9 @@
 }
 ```
 
-## GET /user/:userId/profile (Authentication required)
-- Endpoint: /user/:userId/profile
-- Method: GET
+## GET User Profile details (Authentication required)
+- **Endpoint**: /user/:userId/profile
+- **Method**: GET
 
 - userId in url param and in token is same
 - __Response format__
@@ -146,9 +147,9 @@
 }
 ```
 
-## PUT /user/:userId/profile (Authentication and Authorization required)
-- Endpoint: /user/:userId/profile
-- Method: PUT
+## Update User profile (Authentication and Authorization required)
+- **Endpoint**: /user/:userId/profile
+- **Method**: PUT
 
 - Allowing an user to update their profile.
 - A user can update all the fields
@@ -214,18 +215,18 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 ```
 
 
-### POST /products (_No authentication required_)
-- Endpoint: /products
-- Method: POST
+### Create Product details (_No authentication required_)
+- **Endpoint**: /products
+- **Method**: POST
 
 - Uploading product image to S3 bucket and saving image public url in document.
 - __Response format__
   - _**On success**_ - Returning HTTP status 201 with product document.
   - _**On error**_ - Returning a suitable error message with a valid HTTP status code. 
 
-### GET /products
- - Endpoint:/products
- - Method: GET
+### GET Product details
+ - **Endpoint**:/products
+ -**Method**: GET
 - Returning all products in the collection that aren't deleted.
   - __Filters__
     - Size ( key - 'size')
@@ -243,17 +244,18 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
   - _**On success**_ - Returning HTTP status 200 with product documents.  [this]
   - _**On error**_ - Return a suitable error message with a valid HTTP status code.  [this]
 
-### GET /products/:productId
-- Endpoint:/products/:productId
- - Method: GET
+### GET Product details(by ProductId)
+- **Endpoint**:/products/:productId
+ - **Method**: GET
 - Returns product details by product id
 - __Response format__
   - _**On success**_ - Return HTTP status 200 with product documents.  [this](#successful-response-structure)
   - _**On error**_ - Return a suitable error message with a valid HTTP status code.  [this]
 
-### PUT /products/:productId
- - Endpoint:/products/:productId
- - Method: PUT
+### Update Product details(by Product)
+ - **Endpoint**:/products/:productId
+ - **Method**: PUT
+
 - Updates a product by changing at least one or all fields
 - Check if the productId exists (must have isDeleted false and is present in collection). 
 - If it doesn't, return an HTTP status 404 with a response body like [this](#error-response-structure)
@@ -261,9 +263,9 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
   - _**On success**_ - Return HTTP status 200 with updated product document.  [this](#successful-response-structure)
   - _**On error**_ - Return a suitable error message with a valid HTTP status code.[this](#error-response-structure)
 
-### DELETE /products/:productId
- - Endpoint:/products/:productId
- - Method: DELETE
+### DELETE Product(by Product)
+ - **Endpoint**:/products/:productId
+ - **Method**: DELETE
 
 - Deletes a product by product id (not deleted)
 - __Response format__
@@ -290,9 +292,9 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 ```
 
  
-### POST /users/:userId/cart (Add to cart)(_authentication required as authorization header - bearer token_)
-- Endpoint:/users/:userId/cart
- - Method: POST
+###  Add Cart for User(_authentication required as authorization header - bearer token_)
+- **Endpoint**:/users/:userId/cart
+ - **Method**: POST
 
 - Create a cart for the user if it does not exist. Else add product(s) in cart.
 - Get cart id in request body.
@@ -307,9 +309,9 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
   - _**On success**_ - Returning HTTP status 201 with cart document. [this](#successful-response-structure)
   - _**On error**_ - Returning a suitable error message with a valid HTTP status code.[this](#error-response-structure)
 
-### PUT /users/:userId/cart 
-- Endpoint:/users/:userId/cart
-- Method: PUT
+### Update Cart 
+- **Endpoint**:/users/:userId/cart
+- **Method**: PUT
 - _**In request body**_
   - cartId
   - productId
@@ -325,9 +327,9 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
   - _**On success**_ - Return HTTP status 200 with updated cart document and product details.  [this](#successful-response-structure)
   - _**On error**_ - Return a suitable error message with a valid HTTP status code.  [this](#error-response-structure)
 
-### GET /users/:userId/cart
-- Endpoint:/users/:userId/cart
-- Method: GET
+### Get Cart details
+- **Endpoint**:/users/:userId/cart
+- **Method**: GET
 
 - Make sure that cart exist.
 - Make sure the userId in params and in JWT token match.
@@ -337,10 +339,10 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
   - _**On success**_ - Return HTTP status 200 with  cart document and product details.[this](#successful-response-structure)
   - _**On error**_ - Return a suitable error message with a valid HTTP status code. [this](#error-response-structure)
 
-### DELETE /users/:userId/cart
+### Delete Cart
 
-- Endpoint:/users/:userId/cart
-- Method: DELETE
+- **Endpoint**:/users/:userId/cart
+- **Method**: DELETE
 
 - Make sure that cart exist.
 - Make sure the userId in params and in JWT token match.
@@ -376,10 +378,10 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 
 
  
-### POST /users/:userId/orders (Authentication and authorization required)
+### Place Order(create Order for user)  (Authentication and authorization required)
 
-- Endpoint:/users/:userId/orders
-- Method: POST
+- **Endpoint**:/users/:userId/orders
+- **Method**: POST
 
 - Make sure the userId in params and in JWT token match.
 - Make sure the user exist
@@ -388,10 +390,10 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
   - _**On success**_ - Return HTTP status 200 and order document.  [this](#successful-response-structure)
   - _**On error**_ - Return a suitable error message with a valid HTTP status code.  [this](#error-response-structure)
 
-## PUT /users/:userId/orders
+## Update Order for User
 
-- Endpoint:/users/:userId/orders
-- Method: POST
+- **Endpoint**:/users/:userId/orders
+- **Method**: POST
 
 - Updates an order status
 - Make sure the userId in params and in JWT token match.
