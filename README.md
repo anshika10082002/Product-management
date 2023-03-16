@@ -15,7 +15,8 @@
 
 ## FEATURE I - User
 ### Models
-- User Model
+
+- **User Model**
 ```yaml
 { 
   fname: {string, mandatory},
@@ -43,6 +44,7 @@
 
 
 ## User APIs 
+
 ### User Registration
 - **Endpoint**: /register
 - **Method**: POST
@@ -193,8 +195,9 @@ Note: [Bcrypt](https://www.npmjs.com/package/bcrypt)
 Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 
 ## FEATTURE II - Product
+
 ### Models
-- Product Model
+- **Product Model**
 ```yaml
 { 
   title: {string, mandatory, unique},
@@ -276,7 +279,8 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 
 ## FEATURE III - Cart
 ### Models
-- Cart Model
+
+- **Cart Model**
 ```yaml
 {
   userId: {ObjectId, refs to User, mandatory, unique},
